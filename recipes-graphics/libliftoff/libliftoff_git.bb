@@ -24,6 +24,8 @@ inherit pkgconfig meson
 
 PACKAGECONFIG ??= "examples"
 
+PACKAGECONFIG[examples] = "-Dexamples=enabled, -Dexamples=disabled"
+
 do_install:append() {
 
     INSTALL_EXAMPLES="${@bb.utils.filter('PACKAGECONFIG', 'examples', d)}"
