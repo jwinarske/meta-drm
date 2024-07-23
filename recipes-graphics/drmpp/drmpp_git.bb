@@ -29,6 +29,9 @@ S = "${WORKDIR}/git"
 
 inherit features_check pkgconfig meson
 
+KEYMAP_FILE ??= "${WORKDIR}/keymap_us_pc105.xkb"
+DEFAULT_USER ??= "root"
+
 PACKAGECONFIG ??= "examples"
 
 PACKAGECONFIG[examples] = "-Dexamples=true -Ddefault_library=static, -Dexamples=false"
@@ -36,7 +39,7 @@ PACKAGECONFIG[examples] = "-Dexamples=true -Ddefault_library=static, -Dexamples=
 do_install:append() {
     rm -rf ${D}${bindir}/di-edid-decode
 
-    install -D -m 0644 ${WORKDIR}/keymap_us_pc105.xkb ${D}/home/root/.xkb/keymap.xkb
+    install -D -m 0644 ${KEYMAP_FILE} ${D}/home/${DEFAULT_USER}/.xkb/keymap.xkb
 }
 
 FILES:${PN} += " /home/*"
