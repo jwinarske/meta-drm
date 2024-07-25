@@ -19,7 +19,7 @@ DEPENDS += "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "12cd6e510c8724be285fd78999d7ce3e559b3f67"
+SRCREV = "014450735f0dbed9518042338a5a8dd17785decb"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
     file://keymap_us_pc105.xkb \
