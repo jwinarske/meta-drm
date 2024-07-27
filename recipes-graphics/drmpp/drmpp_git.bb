@@ -19,7 +19,7 @@ DEPENDS += "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "014450735f0dbed9518042338a5a8dd17785decb"
+SRCREV = "97276cf898a711fd0b23cbafee24c13a7f7fd855"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
     file://keymap_us_pc105.xkb \
@@ -41,5 +41,7 @@ do_install:append() {
 
     install -D -m 0644 ${KEYMAP_FILE} ${D}/home/${DEFAULT_USER}/.xkb/keymap.xkb
 }
+
+EXTRA_OEMESON += " -Dexamples=true -Ddefault_library=static"
 
 FILES:${PN} += " /home/*"
