@@ -19,29 +19,23 @@ DEPENDS += "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "742eb826aceec97ef66d74691a4e6d61bbfb1f07"
+SRCREV = "12ab8cdd5d0a82a8ab3e2cc2c78a26d0c65aec0d"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
-    file://keymap_us_pc105.xkb \
     "
 
 S = "${WORKDIR}/git"
 
 inherit features_check pkgconfig meson
 
-KEYMAP_FILE ??= "${WORKDIR}/keymap_us_pc105.xkb"
 DEFAULT_USER ??= "root"
 
 PACKAGECONFIG ??= "examples"
 
-PACKAGECONFIG[examples] = "-Dexamples=true -Ddefault_library=static, -Dexamples=false"
+PACKAGECONFIG[examples] = "-Dexamples=true, -Dexamples=false"
 
 do_install:append() {
     rm -rf ${D}${bindir}/di-edid-decode
-
-    install -D -m 0644 ${KEYMAP_FILE} ${D}/home/${DEFAULT_USER}/.xkb/keymap.xkb
 }
 
-EXTRA_OEMESON += " -Dexamples=true -Ddefault_library=static"
-
-FILES:${PN} += " /home/*"
+EXTRA_OEMESON += " -Ddefault_library=static"
