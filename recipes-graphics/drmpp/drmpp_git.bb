@@ -19,7 +19,7 @@ DEPENDS += "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "12ab8cdd5d0a82a8ab3e2cc2c78a26d0c65aec0d"
+SRCREV = "ebf0c3d96b1aa01b00271026f431bf69f087d9cb"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
     "
