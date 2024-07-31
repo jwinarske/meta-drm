@@ -1,0 +1,29 @@
+From 8e60f593e9d0f7948a82cd2dab7e64da16b7e8b1 Mon Sep 17 00:00:00 2001
+From: Joel Winarske <joel.winarske@gmail.com>
+Date: Wed, 31 Jul 2024 22:23:51 +0000
+Subject: [PATCH] remove Makefile
+
+Signed-off-by: Joel Winarske <joel.winarske@gmail.com>
+---
+ drm-howto/Makefile | 9 ---------
+ 1 file changed, 9 deletions(-)
+ delete mode 100644 drm-howto/Makefile
+
+diff --git a/drm-howto/Makefile b/drm-howto/Makefile
+deleted file mode 100644
+index ebda925..0000000
+--- a/drm-howto/Makefile
++++ /dev/null
+@@ -1,9 +0,0 @@
+-FLAGS=`pkg-config --cflags --libs libdrm`
+-FLAGS+=-Wall -O0 -g
+-FLAGS+=-D_FILE_OFFSET_BITS=64
+-
+-all:
+-	gcc -o modeset modeset.c $(FLAGS)
+-	gcc -o modeset-double-buffered modeset-double-buffered.c $(FLAGS)
+-	gcc -o modeset-vsync modeset-vsync.c $(FLAGS)
+-	gcc -o modeset-atomic modeset-atomic.c $(FLAGS)
+-- 
+2.43.5
+
