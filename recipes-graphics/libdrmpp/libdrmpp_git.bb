@@ -25,7 +25,7 @@ RDEPENDS:${PN} = "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "8c85a091200c8f2e7ef78355cddadf75e0a296bf"
+SRCREV = "72fa50c7940c56e751074bb23edcb0b8d2adbb29"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
     "
@@ -36,6 +36,7 @@ inherit features_check pkgconfig meson
 
 PACKAGECONFIG ??= "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'examples', '', d)} \
+    lvgl-examples \
     ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
 "
 
@@ -45,15 +46,12 @@ PACKAGECONFIG[vulkan] = "-Dvulkan=true, -Dvulkan=false, vulkan-loader"
 
 do_install:append() {
     rm -rf ${D}${bindir}/di-edid-decode
-    rm -rf ${D}${includedir}/libdisplay-info/
-    rm ${D}${includedir}/libliftoff.h
-    rm ${D}${libdir}/libdisplay-info.a
-    rm ${D}${libdir}/libliftoff.a
-    rm ${D}${libdir}/libspdlog.a
-    rm -rf ${D}${libdir}/pkgconfig
+    rm -rf ${D}${bindir}/edid-decode
+    rm -rf ${D}${datadir}/man/man1/edid-decode.1
+    rm -rf ${D}${includedir}/libdisplay-info
+    rm -rf ${D}${includedir}/libliftoff.h
+    rm -rf ${D}${libdir}/libdisplay-info.a
+    rm -rf ${D}${libdir}/libliftoff.a
+    rm -rf ${D}${libdir}/pkgconfig/libdisplay-info.pc
+    rm -rf ${D}${libdir}/pkgconfig/libliftoff.pc
 }
-
-FILES:${PN}-staticdev += "\
-    ${libdir} \
-    ${includedir}/drmpp.h \
-"
