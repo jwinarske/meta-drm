@@ -3,6 +3,8 @@ From: Joel Winarske <joel.winarske@gmail.com>
 Date: Wed, 31 Jul 2024 22:23:51 +0000
 Subject: [PATCH] remove Makefile
 
+Upstream-Status: Inappropriate
+
 Signed-off-by: Joel Winarske <joel.winarske@gmail.com>
 ---
  drm-howto/Makefile | 9 ---------
