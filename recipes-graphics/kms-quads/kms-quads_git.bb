@@ -19,7 +19,7 @@ DEPENDS += "\
 SRCREV = "b164919285ce90645f4201ce61c3a040001a7bd8"
 SRC_URI = "git://gitlab.freedesktop.org/daniels/kms-quads.git;protocol=https;branch=master"
 
-S = "${WORKDIR}/git"
+S = "${UNPACKDIR}/git"
 
 inherit pkgconfig meson
 

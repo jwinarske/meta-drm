@@ -25,12 +25,12 @@ RDEPENDS:${PN} = "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "72fa50c7940c56e751074bb23edcb0b8d2adbb29"
+SRCREV = "29be5876e5d2245a8bde114e446cb0edb78d4d99"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;destsuffix=git;branch=dev \
     "
 
-S = "${WORKDIR}/git"
+S = "${UNPACKDIR}/git"
 
 inherit features_check pkgconfig meson
 

@@ -4,7 +4,9 @@ AUTHOR = "David Rheinsberg"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-DEPENDS = "libdrm"
+DEPENDS += "\
+    libdrm \
+"
 
 SRCREV = "815de035b291cfdf3c858d4420482ffa42c878a1"
 
@@ -14,10 +16,10 @@ SRC_URI = "\
     file://meson.build \
     "
 
-S = "${WORKDIR}/git"
+S = "${UNPACKDIR}/git"
 
 do_configure:prepend() {
-    mv ${WORKDIR}/meson.build ${S}/
+    mv ${UNPACKDIR}/meson.build ${S}/
 }
 
 inherit pkgconfig meson
