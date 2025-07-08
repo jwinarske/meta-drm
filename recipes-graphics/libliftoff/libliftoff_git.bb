@@ -18,8 +18,6 @@ DEPENDS += "\
 SRCREV = "29a06add8ef184f85e37ff8abdc34fbaa2f4ee1e"
 SRC_URI = "git://gitlab.freedesktop.org/emersion/libliftoff.git;protocol=https;branch=master"
 
-S = "${UNPACKDIR}/git"
-
 inherit pkgconfig meson
 
 do_install:append() {

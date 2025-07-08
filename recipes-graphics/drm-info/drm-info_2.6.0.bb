@@ -19,6 +19,4 @@ DEPENDS += "\
 SRCREV = "b89557d57edd9bb43894e5917c11ac92fdafcc50"
 SRC_URI = "git://gitlab.freedesktop.org/emersion/drm_info.git;protocol=https;branch=master"
 
-S = "${UNPACKDIR}/git"
-
 inherit pkgconfig meson

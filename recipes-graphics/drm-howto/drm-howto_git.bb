@@ -16,8 +16,6 @@ SRC_URI = "\
     file://meson.build \
     "
 
-S = "${UNPACKDIR}/git"
-
 do_configure:prepend() {
     mv ${UNPACKDIR}/meson.build ${S}/
 }
