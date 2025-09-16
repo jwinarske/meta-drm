@@ -25,16 +25,16 @@ RDEPENDS:${PN} = "\
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRCREV = "29be5876e5d2245a8bde114e446cb0edb78d4d99"
+SRCREV = "a010d0e5d734811ced551179a33ace8bd86a407f"
 SRC_URI = "\
     gitsm://github.com/jwinarske/drmpp.git;lfs=0;protocol=https;branch=dev \
+    file://0001-libsync-fix.patch \
     "
 
 inherit features_check pkgconfig meson
 
 PACKAGECONFIG ??= "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'examples', '', d)} \
-    lvgl-examples \
     ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
 "
 

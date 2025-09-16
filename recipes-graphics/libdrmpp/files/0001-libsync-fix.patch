@@ -1,0 +1,57 @@
+From 7c667ff7f2279eec99152353dd75af7fb7dfa28c Mon Sep 17 00:00:00 2001
+From: Joel Winarske <joel.winarske@gmail.com>
+Date: Tue, 16 Sep 2025 14:15:59 -0700
+Subject: [PATCH] libsync-fix
+
+Upstream-Status: Inappropriate
+
+Signed-off-by: Joel Winarske <joel.winarske@gmail.com>
+---
+ subprojects/sync/include/ndk/sync.h | 4 ++++
+ subprojects/sync/sync.c             | 4 +++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/subprojects/sync/include/ndk/sync.h b/subprojects/sync/include/ndk/sync.h
+index 85f1e5c..b0f879e 100644
+--- a/subprojects/sync/include/ndk/sync.h
++++ b/subprojects/sync/include/ndk/sync.h
+@@ -86,10 +86,14 @@ struct sync_file_info* sync_file_info(int32_t fd);
+ static inline struct sync_fence_info* sync_get_fence_info(const struct sync_file_info* info) {
+ // This header should compile in C, but some C++ projects enable
+ // warnings-as-error for C-style casts.
++#ifdef __cplusplus
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wold-style-cast"
++#endif
+     return (struct sync_fence_info *)(uintptr_t)(info->sync_fence_info);
++#ifdef __cplusplus
+ #pragma GCC diagnostic pop
++#endif
+ }
+ 
+ /**
+diff --git a/subprojects/sync/sync.c b/subprojects/sync/sync.c
+index bb96a31..0510458 100644
+--- a/subprojects/sync/sync.c
++++ b/subprojects/sync/sync.c
+@@ -115,7 +115,7 @@ struct sw_sync_create_fence_data {
+ // trying the other.
+ 
+ enum uapi_version { UAPI_UNKNOWN, UAPI_MODERN, UAPI_LEGACY };
+-static atomic_int g_uapi_version = ATOMIC_VAR_INIT(UAPI_UNKNOWN);
++static atomic_int g_uapi_version;
+ 
+ // ---------------------------------------------------------------------------
+ 
+@@ -390,6 +390,8 @@ void sync_file_info_free(struct sync_file_info* info) {
+ int sw_sync_timeline_create(void) {
+   int ret;
+ 
++  atomic_init(&g_uapi_version, UAPI_UNKNOWN);
++
+   ret = open("/sys/kernel/debug/sync/sw_sync", O_RDWR);
+   if (ret < 0)
+     ret = open("/dev/sw_sync", O_RDWR);
+-- 
+2.51.0
+
