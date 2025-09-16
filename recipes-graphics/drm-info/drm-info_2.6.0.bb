@@ -16,7 +16,7 @@ DEPENDS += "\
     pciutils \
    "
 
-SRCREV = "b89557d57edd9bb43894e5917c11ac92fdafcc50"
+SRCREV = "210f7c8c22979063f4180cef6587273091842712"
 SRC_URI = "git://gitlab.freedesktop.org/emersion/drm_info.git;protocol=https;branch=master"
 
 inherit pkgconfig meson

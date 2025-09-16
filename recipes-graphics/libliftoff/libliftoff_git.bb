@@ -15,7 +15,7 @@ DEPENDS += "\
     libdrm \
 "
 
-SRCREV = "29a06add8ef184f85e37ff8abdc34fbaa2f4ee1e"
+SRCREV = "49aec6bb0537be1b63272bfb15317ece42a468d6"
 SRC_URI = "git://gitlab.freedesktop.org/emersion/libliftoff.git;protocol=https;branch=master"
 
 inherit pkgconfig meson
